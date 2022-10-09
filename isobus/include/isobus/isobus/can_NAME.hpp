@@ -38,7 +38,7 @@ namespace isobus
 		};
 
 		/// @brief See ISO11783-1 For complete descriptions of the ISO NAME function codes
-		enum class Function
+		enum class Function : std::uint8_t
 		{
 			Engine = 0, ///< The typical mechanical power source of the machine
 			AuxiliaryPowerUnit = 1, ///< Power source for operating systems without the use of the prime “drive” engine
@@ -108,8 +108,84 @@ namespace isobus
 			GasFlowMeasurement = 65, ///< Provides measurement of gas flow rates and associated parameters
 			IOController = 66, ///< Reporting and/or control unit for external input and output channels
 			ElectricalSystemController = 67, ///< Can include load centres, fuse boxes and power distribution boards
-			Reserved = 68, ///< Reserved range beginning
-			MaxFunctionCode = 127 ///< Max allocated function code
+			AftertreatmentSystemGasMeasurement = 68, ///< Sensor for measuring gas properties before and after an aftertreatment system
+			EngineEmissionAftertreatmentSystem = 69, ///< Engine Emission Aftertreatment System
+			AuxiliaryRegenerationDevice = 70, ///< Auxiliary Regeneration Device used as part of an after treatment system
+			TransferCaseControl = 71, ///< The device which controls the selection of the number of drive wheels (for example 2 or 4 wheel drive)
+			CoolantValveController = 72, ///< Device used to control the flow of coolant (water, oil, air, etc…) for any thermal management system
+			RolloverDetectionControl = 73, ///< Device designed for detection of vehicle rollover
+			LubricationSystem = 74, ///< The Lubrication System pumps quantities of lubricant to each machine/vehicle joint that need to be lubricated
+			SupplementalFan = 75, ///< This is an auxillary fan used for additional cooling. It is in addition to the primary cooling fan.
+			TemperatureSensor = 76, ///< Device which measures temperature.
+			FuelPropertiesSensor = 77, ///< Device which measures fuel properties
+			FireSuppressionSystem = 78, ///< Fire Suppression System
+			PowerSystemsManager = 79, ///< Controller application that manages the power output of one or more power systems. See also IG 5 Function 129 - Generator Set Controller
+			ElectricPowertrain = 80, ///< Controller application in charge of controlling and coordinating the operation of an electric drive system
+			HydraulicPowertrain = 81, ///< Controller application in charge of controlling and coordinating the operation of a hydraulic drive system
+			FileServer = 82, ///< A file storage unit on the network - A permanent connection may exist and the unit is expected to store data (as in magnetic or eerom devices). See Function 61 for a combination File Server/Printer unit
+			Printer = 83, ///< A printing unit on the network - A permanent connection may exist and the unit is expected to be able to print (paper type output). See Function 61 for a combination File Server/Printer unit
+			StartAidDevice = 84, ///< Device that controls hardware and/or conveys information related to assisting an engine in starting, such as a glow plug, grid heater, etc.
+			EngineInjectionControlModule = 85, ///< A device for direct or port injection of fuel for engine combustion and with which an engine controller may communicate
+			EVCommunicationController = 86, ///< A controller or application that manages the connection to an external power source, i.e. the Electric Vehicle Supply Equipment
+			DriverImpairmentDevice = 87, ///< Device which prevents the starting of a vehicle motor due to driver impairment. Example is an alcohol interlock device
+			ElectricPowerConverter = 88, ///< An inverter or converter used to transform AC or DC power to or from an AC or DC source
+			SupplyEquipmentCommunicationController = 89, ///< Typically part of an Electrical Vehicle Supply Equipment (EVSE) in an electric vehicle charging station
+			VehicleAdapterCommunicationController = 90, ///< A controller inside of the adapter placed between an Electric Vehicle Supply Equipment (EVSE) vehicle connector and the vehicle inlet
+
+			// Non-specific system industry group and vehicle system
+			Reserved = 128, ///< Reserved
+			OffBoardDiagnosticServiceTool = 129, ///< Off-board diagnostic-service tool
+			OnBoardDiagnosticDataLogger = 130, ///< On-board data logger
+			PCKeyboard = 131, ///< A user interface similar to a PC keyboard
+			SafetyRestraintSystem = 132, ///< The safety restraint system can be for controlling activation of airbags, belt tensioners, roll over protection systems, etc
+			Turbocharger = 133, ///< Turbocharger used on the engine
+			GroundBasedSpeedSensor = 134, ///< Measures actual ground speed of a vehicle with a device such as radar or other such devices
+			Keypad = 135, ///< An operator input device used to control machine functions or provide data
+			HumiditySensor = 136, ///< Device which measures air humidity
+			ThermalManagementSystemController = 137, ///< This device controls all devices that may be used in a thermal management system including Jacket Water Cooling, Charged Air Cooling, Transmission Cooling, Electronics Cooling, Aux Oil Cooling, etc
+			BrakeStrokeAlert = 138, ///< The device that evaluates air brake stroke for normal stroke, over stroke, dragging brake, or a non-functioning brake actuator and is permanently mounted on the vehicle
+			OnBoardAxleGroupScale = 139, ///< The device that determines axle group weights and is permanently mounted on the vehicle.
+			OnBoardAxleGroupDisplay = 140, ///< The device that displays axle group weights and may be permanently mounted on the vehicle
+			BatteryCharger = 141, ///< A device used to charge batteries in a vehicle from an off-board source of electrical energy.
+			TurbochargerCompressorBypass = 142, ///< Device used to control the flow across the Compressor Bypass
+			TurbochargerWastegate = 143, ///< Device used to control the position of the Wastegate to adjust the exhaust flow
+			Throttle = 144, ///< Device used to control the air/fuel mixture into the cylinders for combustion
+			InertialSensor = 145, ///< Detects a change in geographic position, a change in velocity, and/or a change in orientation. This may include but is not limited to an accelerometer, gyroscopes, etc
+			FuelActuator = 146, ///< Device used to control the flow of fuel (or fuel rack) on a engine
+			EngineExhaustGasRecirculation = 147, ///< Device that controls the engine exhaust gas recirculation system
+			EngineExhaustBackpressure = 148, ///< Device that controls the engine exhaust backpressure
+			OnBoardBinWeightingScale = 149, ///< Device that determines bin weights and is permanently mounted on the vehicle
+			OnBoardBinWeighingScalDisplay = 150, ///< Device that displays bin weights and may be permanently mounted on the vehicle
+			EngineCylinderPressureMonitoringSystem = 151, ///< System designed to monitor engine cylinder pressures and provide combustion information
+			ObjectDetection = 152, ///< System for detection of undesireable objects in the product flow
+			ObjectDetectionDisplay = 153, ///< Display designed specifically for displaying and managing object detection information
+			ObjectDetectionSensor = 154, ///< Detects the presence of objects within a region.
+			PersonnelDetectionDevice = 155, /// < Device for the detection of personnel in proximity to a vehicle.
+
+			// Non-specific system industry group 1
+			Tachograph = 128,
+			DoorController = 129,
+			ArticulationTurntableControl = 130,
+			BodyToVehicleInterfaceControl = 131,
+			SlopeSensor = 132,
+			RetarderDisplay = 134,
+			DifferentialLockController = 135,
+			LowVoltageDisconnect = 136,
+			RoadwayInformation = 137,
+			AutomatedDriving = 138,
+
+			// Tractor industry group 1
+			ForwardRoadImageProcessing = 128,
+			FifthWheelSmartSystem = 129,
+			CatalystFluidSensor = 130,
+			AdaptiveFrontLightingSystem = 131,
+			IdleControlSystem = 132,
+			UserInterfaceSystem = 133,
+
+			// Non-specific system industry group 2
+			NonVirtualTerminalDisplay = 128,
+
+			MaxFunctionCode = 255 ///< Max allocated function code
 		};
 
 		/// @brief A structure that tracks the pair of a NAME parameter and associated value
