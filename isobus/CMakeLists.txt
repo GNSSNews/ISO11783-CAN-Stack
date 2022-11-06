@@ -32,6 +32,7 @@ set(ISOBUS_SRC
   "isobus_diagnostic_protocol.cpp"
   "can_parameter_group_number_request_protocol.cpp"
   "nmea2000_fast_packet_protocol.cpp"
+  "isobus_file_server_client.cpp"
 )
 
 # Prepend the source directory path to all the source files
@@ -59,6 +60,7 @@ set(ISOBUS_INCLUDE
   "isobus_diagnostic_protocol.hpp"
   "can_parameter_group_number_request_protocol.hpp"
   "nmea2000_fast_packet_protocol.hpp"
+  "isobus_file_server_client.hpp"
 )
 
 # Prepend the include directory path to all the include files
