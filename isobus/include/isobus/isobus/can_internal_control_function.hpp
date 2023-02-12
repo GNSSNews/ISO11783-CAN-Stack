@@ -34,7 +34,7 @@ namespace isobus
 	public:
 		/// @brief Constructor for an internal control function
 		/// @param[in] desiredName The NAME for this control function to claim as
-		/// @param[in] preferredAddress The preferred NAME for this control function
+		/// @param[in] preferredAddress The preferred address for this control function
 		/// @param[in] CANPort The CAN channel index for this control function to use
 		InternalControlFunction(NAME desiredName, std::uint8_t preferredAddress, std::uint8_t CANPort);
 
